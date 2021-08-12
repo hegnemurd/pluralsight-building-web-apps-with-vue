@@ -27,7 +27,7 @@
       <div class="columns is-4" v-if="selectedHero">
         <div class="card">
           <header class="card-header">
-            <p class="card-header-title">{{ selectedHero.firstName }}</p>
+            <p class="card-header-title">{{ fullName }}</p>
           </header>
           <div class="card-content">
             <div class="content">
@@ -105,7 +105,7 @@ const ourHeroes = [
   {
     id: 40,
     firstName: 'Jack',
-    lastName: 'Ydeeps',
+    lastName: 'Deeps',
     description: 'Speediest of them all',
   },
 ];
@@ -113,12 +113,31 @@ export default {
   name: 'Heroes',
   data() {
     return {
-      heroes: ourHeroes,
+      heroes: [],
       selectedHero: undefined,
       message: '',
     };
   },
+  computed: {
+    fullName() {
+      return `${this.selectedHero.firstName} ${this.selectedHero.lastName}`;
+    },
+  },
+  created() {
+    this.loadHeroes();
+  },
   methods: {
+    async getHeroes() {
+      return new Promise(resolve => {
+        setTimeout(() => resolve(ourHeroes), 1500);
+      });
+    },
+    async loadHeroes() {
+      this.heroes = [];
+      this.message = 'Getting the heroes, please be patient.';
+      this.heroes = await this.getHeroes();
+      this.message = '';
+    },
     handleTheCapes(newValue) {
       const value = parseInt(newValue, 10);
       switch (value) {
