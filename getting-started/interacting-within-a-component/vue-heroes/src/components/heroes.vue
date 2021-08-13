@@ -13,7 +13,7 @@
             <li v-for="hero in heroes" :key="hero.id">
               <a
                 class="list-item"
-                @click="selectedHero = hero"
+                @click="selectHero(hero)"
                 :class="{ 'is-active': selectedHero === hero }"
               >
                 <span>{{ hero.firstName }}</span>
@@ -38,7 +38,7 @@
                 </label>
               </div>
               <div class="field">
-                <label class="label" for="firstName">first name</label>
+                <label class="label" for="firstName">First name</label>
                 <input
                   class="input"
                   id="firstName"
@@ -46,7 +46,7 @@
                 />
               </div>
               <div class="field">
-                <label class="label" for="lastName">last name</label>
+                <label class="label" for="lastName">Last name</label>
                 <input
                   class="input"
                   id="lastName"
@@ -54,12 +54,25 @@
                 />
               </div>
               <div class="field">
-                <label class="label" for="description">description</label>
+                <label class="label" for="description">Description</label>
                 <input
                   class="input"
                   id="description"
                   v-model="selectedHero.description"
                 />
+              </div>
+              <div class="field">
+                <label class="label" for="originDate">Origin date</label>
+                <input
+                  type="date"
+                  class="input"
+                  id="originDate"
+                  v-model="selectedHero.originDate"
+                />
+                <p class="comment">
+                  My origin story began on
+                  {{ selectedHero.originDate | shortDate }}
+                </p>
               </div>
               <div class="field">
                 <label class="label" for="capeCounter">Cape counter</label>
@@ -98,12 +111,17 @@
 </template>
 
 <script>
+import { format, parseISO } from 'date-fns';
+const inputDateFormat = 'yyyy-MM-dd';
+const displayDateFormat = `MMM dd, yyyy'`;
+
 const ourHeroes = [
   {
     id: 10,
     firstName: 'Sabrina',
     lastName: 'Morts',
     capeCounter: 1,
+    originDate: format(new Date(2000, 9, 17), inputDateFormat),
     description: 'Strom Bringer',
   },
   {
@@ -111,6 +129,7 @@ const ourHeroes = [
     firstName: 'Rae',
     lastName: 'Erif',
     capeCounter: 3,
+    originDate: format(new Date(1998, 7, 23), inputDateFormat),
     description: 'Did someone say fire',
   },
   {
@@ -118,6 +137,7 @@ const ourHeroes = [
     firstName: 'Ella',
     lastName: 'Odanrot',
     capeCounter: 2,
+    originDate: format(new Date(1997, 3, 5), inputDateFormat),
     description: 'Wielder of tornados ',
   },
   {
@@ -125,6 +145,7 @@ const ourHeroes = [
     firstName: 'Jack',
     lastName: 'Deeps',
     capeCounter: 0,
+    originDate: format(new Date(1999, 11, 31), inputDateFormat),
     description: 'Speediest of them all',
   },
 ];
@@ -194,6 +215,11 @@ export default {
         console.log(`Watcher evaluated, old=${oldValue}, new${newValue}`);
         this.handleTheCapes(newValue);
       },
+    },
+  },
+  filters: {
+    shortDate: function(DateinISOformat) {
+      return format(parseISO(DateinISOformat), displayDateFormat);
     },
   },
 };
