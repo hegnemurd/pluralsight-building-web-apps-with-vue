@@ -47,9 +47,8 @@
 </template>
 
 <script>
+import { heroWatchers, lifecycleHooks, ourHeroes, logger } from '../shared';
 import HeroDetail from '@/components/hero-detail';
-
-import { ourHeroes } from '../shared';
 
 export default {
   name: 'Heroes',
@@ -61,11 +60,13 @@ export default {
       capeMessage: '',
     };
   },
-  created() {
-    this.loadHeroes();
-  },
   components: {
     HeroDetail,
+  },
+  mixins: [lifecycleHooks, heroWatchers],
+  created() {
+    this.loadHeroes();
+    logger.info(`${this.componentName} created hook called`);
   },
   methods: {
     async getHeroes() {
