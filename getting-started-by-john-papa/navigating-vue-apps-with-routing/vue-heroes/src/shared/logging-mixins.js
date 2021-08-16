@@ -3,7 +3,7 @@ import { logger } from './';
 const hookMessageSuffix = 'hook called (from mixin)';
 
 export const lifecycleHooks = {
-  // Computed
+  // Computeds
   computed: {
     componentName() {
       return `${this.$options.name} component`;
