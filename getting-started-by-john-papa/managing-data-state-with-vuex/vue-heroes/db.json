@@ -6,7 +6,8 @@
       "lastName": "Papa",
       "capeCounter": 1,
       "originDate": "1996-06-06",
-      "description": "fashionista"
+      "description": "fashionista",
+      "fullName": "Ella Papa"
     },
     {
       "id": 20,
@@ -31,6 +32,12 @@
       "capeCounter": 0,
       "originDate": "10/01/2000",
       "description": "arc trooper"
+    },
+    {
+      "firstName": "Potato",
+      "lastName": "Panda",
+      "description": "PotatoPanda Ninja",
+      "id": 41
     }
   ],
   "villains": [
