@@ -1,13 +1,20 @@
 {
   "heroes": [
     {
+      "id": 10,
+      "firstName": "Ella",
+      "lastName": "Papa",
+      "capeCounter": 1,
+      "originDate": "1996-06-06",
+      "description": "fashionista"
+    },
+    {
       "id": 20,
       "firstName": "Madelyn",
-      "lastName": "Papafefeffref",
+      "lastName": "Papa",
       "capeCounter": 3,
       "originDate": "08/01/1998",
-      "description": "the cat whisperer",
-      "fullName": "Madelyn Papa"
+      "description": "the cat whisperer"
     },
     {
       "id": 30,
@@ -18,10 +25,12 @@
       "description": "pen wielder"
     },
     {
-      "firstName": "vfvfv",
-      "lastName": "vfvfvfvfvf",
-      "description": "vfvfvvfvsvv",
-      "id": 31
+      "id": 40,
+      "firstName": "Landon",
+      "lastName": "Papa",
+      "capeCounter": 0,
+      "originDate": "10/01/2000",
+      "description": "arc trooper"
     }
   ],
   "villains": [
