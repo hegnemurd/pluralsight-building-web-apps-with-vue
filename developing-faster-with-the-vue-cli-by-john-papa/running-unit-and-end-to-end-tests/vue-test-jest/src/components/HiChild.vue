@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Child says {{ message }}</h2>
-    <div v-if="error">{{ error }}</div>
+    <div class="error" v-if="error">{{ error }}</div>
   </div>
 </template>
 
