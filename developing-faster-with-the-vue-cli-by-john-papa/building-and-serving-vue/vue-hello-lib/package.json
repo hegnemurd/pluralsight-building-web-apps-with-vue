@@ -14,6 +14,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build-lib": "vue-cli-service build --target lib --name vue-hello-lib ./src/components/index.js",
+    "build-wc": "vue-cli-service build --target wc --name vue-hello-lib-wc ./src/components/HelloWorld.vue",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
